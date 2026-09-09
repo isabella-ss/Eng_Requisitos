@@ -41,9 +41,17 @@ Considere a seguinte situação:
 Reflita e registre suas ideias:
 
 1. O sistema pode ser considerado de qualidade? Justifique.
+Não. Apesar de possuir as funcionalidades solicitadas, apresenta problemas de desempenho, compatibilidade, capacidade de interação e segurança.
+
 2. Cumprir os requisitos funcionais é suficiente?
+Não. Também é necessário avaliar características de qualidade como desempenho, segurança, confiabilidade, interação e adaptabilidade.
+
 3. Quais problemas podem ser identificados?
+Demora de 15 segundos para abrir a página de notas, problemas de funcionamento em celulares, mensagens difíceis de compreender e acesso indevido a informações.
+
 4. Como esses problemas poderiam ser avaliados objetivamente?
+Por meio de métricas e critérios verificáveis, como tempo máximo de resposta, testes em dispositivos móveis, testes com usuários e testes de controle de acesso.
+
 
 ## 4. O que é qualidade de software?
 
@@ -232,15 +240,15 @@ Uma mesma ocorrência pode envolver mais de uma característica. Quando isso aco
 
 | Ocorrência | Característica predominante | Justificativa | Requisito de qualidade | Critério de aceitação | Teste ou avaliação |
 |---:|---|---|---|---|---|
-| 1 |  |  |  |  |  |
-| 2 |  |  |  |  |  |
-| 3 |  |  |  |  |  |
-| 4 |  |  |  |  |  |
-| 5 |  |  |  |  |  |
-| 6 |  |  |  |  |  |
-| 7 |  |  |  |  |  |
-| 8 |  |  |  |  |  |
-| 9 |  |  |  |  |  |
+| 1 | Adequação funcional | A função existe e é executada, mas produz um resultado incorreto — o problema está na correção do cálculo, não em desempenho, segurança ou interação. | O sistema deve calcular a média final aplicando corretamente as regras de ponderação definidas pelo curso, sem divergência em relação ao cálculo de referência. | 100% dos casos de teste com valores conhecidos devem retornar exatamente o resultado esperado. | Testes unitários com massa de dados conhecida, comparando o resultado calculado com o resultado de referência. |
+| 2 | Eficiência de desempenho | O problema está diretamente relacionado ao tempo de resposta do sistema diante dos recursos disponíveis. | A página de notas deve carregar em até 2 segundos para 95% das requisições, com até 500 usuários simultâneos. | Tempo de resposta abaixo de 2 segundos em pelo menos 95% das requisições medidas em teste de carga. | Teste de desempenho/carga com ferramenta de medição de tempo de resposta. |
+| 3 | Capacidade de interação | O problema não é técnico, e sim de reconhecimento e clareza da função dentro da interface. | Pelo menos 90% dos estudantes devem localizar e iniciar a renovação de matrícula em até 1 minuto, sem ajuda externa. | Taxa de sucesso ≥ 90% dentro do tempo estipulado, em teste com usuários reais. | Teste de usabilidade com observação de tempo e taxa de conclusão. |
+| 4 | Eficiência de desempenho | A falha ocorre por limitação de capacidade sob carga; relaciona-se também à confiabilidade, pois o serviço deixa de estar disponível. | O sistema deve suportar 500 usuários simultâneos mantendo tempo de resposta ≤ 2s e taxa de erro < 1%. | Em teste de carga com 500 usuários simultâneos, taxa de erro inferior a 1% e tempo de resposta dentro do limite definido. | Teste de carga/estresse (*load* e *stress testing*). |
+| 5 | Segurança | Há falha de controle de acesso, permitindo que um usuário visualize dados de outro — questão de confidencialidade. | O sistema deve garantir que cada usuário acesse exclusivamente seus próprios dados acadêmicos, exceto perfis explicitamente autorizados. | Zero ocorrências de acesso indevido em testes de controle de acesso; todas as tentativas registradas em log. | Teste de autorização/controle de acesso e auditoria de logs. |
+| 6 | Manutenibilidade | Uma alteração pontual gerou efeitos colaterais em outros módulos, indicando baixa modularidade. | Alterações no módulo de cadastro não devem exigir modificações em módulos não relacionados; a suíte de regressão deve cobrir os módulos dependentes. | Execução da suíte de testes de regressão sem falhas após a alteração isolada do módulo. | Testes de regressão automatizados e análise de acoplamento entre módulos. |
+| 7 | Compatibilidade | O problema está na incapacidade de trocar dados corretamente com outro sistema (financeiro). | O sistema deve importar e sincronizar dados do sistema financeiro via API, preservando a integridade dos registros. | 100% dos registros de teste importados corretamente, sem erro de formato ou perda de dados. | Teste de integração em ambiente de homologação com o sistema financeiro. |
+| 8 | Flexibilidade | O problema está relacionado à dificuldade de instalar/adaptar o produto a um novo ambiente computacional. | O sistema deve ser implantado em um novo ambiente compatível sem necessidade de alterações manuais no código-fonte. | Processo de implantação concluído com sucesso via script automatizado, sem intervenção manual além de parametrização. | Teste de implantação (*deploy*) em ambiente novo, utilizando script de instalação. |
+| 9 | Proteção contra riscos | Trata-se de um risco físico real, pois o equipamento pode ser acionado mesmo em condição insegura — impacto potencial a pessoas ou patrimônio. | O sistema deve bloquear o acionamento do equipamento sempre que o sensor indicar condição insegura, sem exceção. | 100% dos casos de teste com condição insegura simulada resultam em bloqueio do acionamento. | Testes de simulação de cenários de risco (*fault injection*) verificando o bloqueio da operação. |
 
 ## 9. Análise de conflitos de qualidade
 
@@ -248,11 +256,25 @@ As características de qualidade estão relacionadas. Uma decisão de projeto po
 
 Analise as situações:
 
-1. A inclusão de novas verificações de segurança pode produzir algum impacto no desempenho? Explique.
-2. Como mecanismos adicionais de autenticação podem afetar a interação do usuário?
-3. Uma arquitetura muito flexível pode aumentar a complexidade de desenvolvimento e manutenção?
-4. Que impactos técnicos e financeiros podem surgir quando a equipe aumenta a redundância para melhorar a confiabilidade?
-5. Como a equipe deve decidir quais características terão maior prioridade em um projeto?
+**1. A inclusão de novas verificações de segurança pode produzir algum impacto no desempenho? Explique.**
+ 
+Sim. Mecanismos de segurança como criptografia, autenticação multifator e validação de tokens exigem processamento adicional, o que pode aumentar o tempo de resposta do sistema. Por isso, ao reforçar a segurança, a equipe precisa balancear esse ganho com o impacto na eficiência de desempenho, buscando soluções (como cache ou processamento assíncrono) que reduzam o custo extra.
+ 
+**2. Como mecanismos adicionais de autenticação podem afetar a interação do usuário?**
+ 
+Etapas extras de autenticação (como um segundo fator) tornam o processo de acesso mais longo e podem frustrar usuários acostumados a um fluxo mais direto. Isso representa um conflito entre segurança e capacidade de interação: a equipe precisa projetar esses mecanismos de forma clara e o menos invasiva possível, para não comprometer a experiência do usuário.
+ 
+**3. Uma arquitetura muito flexível pode aumentar a complexidade de desenvolvimento e manutenção?**
+ 
+Sim. Quanto mais genérica e configurável for a arquitetura (múltiplos plugins, camadas de abstração, parametrizações), maior tende a ser a dificuldade para compreender, testar e modificar o sistema. Esse é um conflito clássico entre flexibilidade e manutenibilidade, que exige avaliar se o nível de flexibilidade proposto é realmente necessário para o contexto do produto.
+ 
+**4. Que impactos técnicos e financeiros podem surgir quando a equipe aumenta a redundância para melhorar a confiabilidade?**
+ 
+Tecnicamente, aumenta a complexidade operacional (réplicas, sincronização de dados). Financeiramente, eleva o custo com infraestrutura, licenças e equipe para manter esses ambientes redundantes. O ganho em disponibilidade e confiabilidade precisa ser justificado pelo risco que se busca mitigar.
+ 
+**5. Como a equipe deve decidir quais características terão maior prioridade em um projeto?**
+ 
+A priorização deve considerar o contexto de uso do sistema, os riscos envolvidos, as necessidades explícitas dos stakeholders, exigências legais/regulatórias e o impacto de uma eventual falha em cada característica. Essas prioridades devem ser negociadas e registradas, pois nem sempre é possível maximizar todas as características ao mesmo tempo.
 
 ## 10. Exercícios de revisão
 
@@ -261,7 +283,7 @@ Analise as situações:
 Um sistema apresenta todas as funções necessárias, mas leva 20 segundos para processar uma consulta. Qual característica está mais diretamente comprometida?
 
 A. Compatibilidade  
-B. Eficiência de desempenho  
+**B. Eficiência de desempenho** 
 C. Manutenibilidade  
 D. Segurança
 
@@ -269,7 +291,7 @@ D. Segurança
 
 A capacidade de trocar dados corretamente com outro sistema está relacionada principalmente a:
 
-A. Compatibilidade  
+**A. Compatibilidade**  
 B. Confiabilidade  
 C. Proteção contra riscos  
 D. Adequação funcional
@@ -281,14 +303,14 @@ Qual alternativa representa um requisito mensurável?
 A. O sistema deve ser intuitivo.  
 B. O sistema deve ser bastante seguro.  
 C. O sistema deve ser moderno.  
-D. A consulta deve ser concluída em até dois segundos para 95% das requisições.
+**D. A consulta deve ser concluída em até dois segundos para 95% das requisições.**
 
 ### Questão 4
 
 A facilidade para alterar e testar um componente está relacionada a:
 
 A. Flexibilidade  
-B. Manutenibilidade  
+**B. Manutenibilidade**  
 C. Compatibilidade  
 D. Capacidade de interação
 
@@ -298,7 +320,7 @@ Impedir que um sistema hospitalar execute uma operação que coloque o paciente 
 
 A. Adequação funcional  
 B. Eficiência de desempenho  
-C. Proteção contra riscos (*safety*)  
+**C. Proteção contra riscos (*safety*)**  
 D. Compatibilidade
 
 ### Questão 6 — Produção textual
@@ -309,6 +331,13 @@ Escolha uma característica da ISO/IEC 25010:2023 e produza:
 2. uma versão mensurável ou verificável desse requisito;
 3. um critério de aceitação;
 4. uma estratégia de teste.
+
+**Característica escolhida: Confiabilidade**
+ 
+1. **Requisito vago:** O sistema deve estar sempre disponível.
+2. **Versão mensurável:** O sistema deve garantir disponibilidade mínima de 99,5% durante o horário comercial (8h às 18h), medida mensalmente.
+3. **Critério de aceitação:** O tempo total de indisponibilidade no mês não deve ultrapassar o limite equivalente a 0,5% do período comercial, verificado pelos registros de monitoramento.
+4. **Estratégia de teste:** Monitoramento contínuo de disponibilidade (*uptime*) com ferramenta de observabilidade, gerando relatório mensal consolidado para verificação do indicador
 
 ## 11. Síntese para estudo
 
