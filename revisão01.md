@@ -1,4 +1,4 @@
-# Resumo — Engenharia de Requisitos
+# Revisão 01 — Engenharia de Requisitos
 
 *Material de revisão: Levantamento de Requisitos, ISO/IEC 25010, BPM CBOK, BABOK e MoSCoW.*
 
