@@ -6,21 +6,29 @@ CENTRO UNIVERSITÁRIO DE BRASÍLIA – UNICEUB
 
 Tema: UML — Diagrama de Casos de Uso
 
-Alunos: Cauã Diniz, Moisés Cunha, Eduardo Victor, Isabela Saboia, Luís Eduardo e Lucca Peres
+| Alunos: |  |
+| :---- | :---- |
+| Cauã Diniz | Lucca Peres |
+| Moisés Cunha | Eduardo Victor |
+| Isabela Saboia | Luís Eduardo |
 
+----
 Disciplina: Engenharia de Requisitos
-
-Professora: Kadidja Valéria
 
 Brasília – DF
 
+Professora: Kadidja Valéria
+---
+
+
 2026
 
-1. # **Identificação da atividade**
+**1. Identificação da atividade**
 
 Esta atividade tem como base o artigo Um Jogo Acessível para o Ensino de UML e aborda a transformação de requisitos textuais em um Diagrama de Casos de Uso do jogo U.C. Battle.
 
-2. # **Etapa 1 — Leitura e identificação**
+--- 
+ **2. Etapa 1 — Leitura e identificação**
 
 Objetivo principal: ensinar conceitos de UML e casos de uso de forma acessível e interativa.
 
@@ -30,7 +38,9 @@ Principais funcionalidades: selecionar fase, enfrentar vilão, responder charada
 
 Regra da dica: pode ser utilizada somente uma vez por batalha e quando o jogador possuir dois pontos de vida ou menos.
 
-3. # **Quadro de análise**
+---
+
+**3. Quadro de análise**
 
 | Elemento identificado | Classificação |
 | :---- | :---- |
@@ -46,7 +56,9 @@ Regra da dica: pode ser utilizada somente uma vez por batalha e quando o jogador
 | Dica uma vez por batalha | Regra de negócio |
 | Dica com 2 vidas ou menos | Regra de negócio |
 
-4. # **Casos de uso do sistema**
+---
+
+**4. Casos de uso do sistema**
 
 1. Selecionar fase
 
@@ -64,7 +76,9 @@ Regra da dica: pode ser utilizada somente uma vez por batalha e quando o jogador
 
 8. Configurar recursos de acessibilidade
 
-5. # **Relações UML**
+---
+
+**5. Relações UML**
 
 \<\<include\>\>: Enfrentar vilão → Responder charada. Responder à charada faz parte da batalha.
 
@@ -72,7 +86,8 @@ Regra da dica: pode ser utilizada somente uma vez por batalha e quando o jogador
 
 A fronteira do sistema é U.C. Battle e o ator principal é o Jogador.
 
-6. # **Representação textual do diagrama**
+---
+**6. Representação textual do diagrama**
 
 **U.C. BATTLE**
 
@@ -85,7 +100,8 @@ Jogador → Estudar conceitos
 Jogador → Consultar conteúdo  
 Jogador → Configurar recursos de acessibilidade
 
-7. # **Matriz de rastreabilidade**
+---
+**7. Matriz de rastreabilidade**
 
 | ID | Requisito funcional | Caso de uso | No diagrama? |
 | :---: | :---- | :---- | ----- |
@@ -95,7 +111,8 @@ Jogador → Configurar recursos de acessibilidade
 | RF04 | Utilizar uma dica | Receber dica | Sim |
 | RF05 | Acessar treinamento | Acessar modo de treinamento | Sim |
 
-8. # **Checklist de validação**
+---
+**8. Checklist de validação**
 
 ☑ Ator: Jogador.
 
@@ -117,14 +134,20 @@ Jogador → Configurar recursos de acessibilidade
 
 ☑ Modelo deve permanecer legível e sem elementos desconectados.
 
-9. # **Justificativa das decisões de modelagem**
+---
+**9. Justificativa das decisões de modelagem**
 
 O diagrama representa o jogador interagindo com as principais funcionalidades do U.C. Battle. A relação \<\> foi utilizada entre “Enfrentar vilão” e “Responder charada”, pois responder à charada faz parte da batalha. A relação \<\> foi utilizada para “Receber dica”, pois essa funcionalidade é opcional e depende das condições estabelecidas pelo jogo. A acessibilidade também foi considerada no modelo.
 
-10. # **Questão de encerramento**
+---
+**10. Questão de encerramento**
 
 Quando um requisito funcional não possui correspondência clara no modelo UML, podem surgir erros, funcionalidades esquecidas e dificuldades para verificar se o sistema atende aos requisitos.
 
 Fonte principal: Tavares, Irvin Ken Xavier; Eliseo, Maria Amelia. Um Jogo Acessível para o Ensino de UML.
 
-11. # **Diagrama**
+---
+**11. Diagrama**
+<p>
+  <img src="diagrama.png" alt="diagrama" width="500">
+</p>
